@@ -1,12 +1,20 @@
 elderWandWizard = input()
-wizardBattles = int(input())
-wizardCounter = 1
+rows = int(input()) 
+ownerCounter = 1
+wizardBattleDataset = []
+wizardOwners = [elderWandWizard]
 
-for battles in range(wizardBattles):
-    battleContestants = input()
-    if elderWandWizard == battleContestants[2]:
-        elderWandWizard = battleContestants[0]
-        wizardCounter = wizardCounter + 1
+for row in range(rows):
+    battleContestants = input().split()
+    wizardBattleDataset.append(battleContestants)
 
-print(elderWandWizard)
-print(wizardCounter)
+for row in range(rows):
+    if wizardBattleDataset[row][1] == elderWandWizard:
+        elderWandWizard = wizardBattleDataset[row][0]
+        # is that owner already in the list though ?
+        if elderWandWizard not in wizardOwners: 
+            ownerCounter = ownerCounter + 1
+        wizardOwners.append(elderWandWizard)
+
+print(wizardOwners[len(wizardOwners)-1])
+print(ownerCounter)
